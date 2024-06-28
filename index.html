@@ -1,0 +1,32 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60歳までの生存確率計算ツール</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      #result {
+        margin-top: 20px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>60歳までの生存確率計算ツール</h1>
+    <label for="ageInput">現在の年齢を入力してください (0-59):</label>
+    <input type="number" id="ageInput" min="0" max="59">
+    <button id="calculateButton">計算する</button>
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+  </body>
+
+</html>
