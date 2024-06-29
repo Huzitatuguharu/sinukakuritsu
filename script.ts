@@ -1,11 +1,9 @@
-// script.ts
-type MortalityData = {
+interface MortalityData {
   age: number;
   mortalityRate: number;
-};
+}
 
-// 年齢区間ごとの死亡率データ
-const mortalityData: MortalityData[] = [
+const mortalityRates: MortalityData[] = [
   { age: 0, mortalityRate: 44.5 / 100000 },
   { age: 5, mortalityRate: 6.4 / 100000 },
   { age: 10, mortalityRate: 8.1 / 100000 },
@@ -29,41 +27,58 @@ const mortalityData: MortalityData[] = [
   { age: 100, mortalityRate: 46186.2 / 100000 },
 ];
 
-// 生存確率を計算する関数
-function calculateSurvivalProbability(currentAge: number): number {
-  let survivalProbability = 1.0;
-
-  for (let age = currentAge; age < 60; age += 5) {
-    const mortalityRate =
-      mortalityData.find((data) => data.age === age)?.mortalityRate || 0;
-    survivalProbability *= 1 - mortalityRate;
+function getMortalityRate(age: number): number {
+  for (let i = 0; i < mortalityRates.length; i++) {
+    if (age < mortalityRates[i].age) {
+      return mortalityRates[i - 1].mortalityRate;
+    }
   }
-
-  return survivalProbability;
+  return mortalityRates[mortalityRates.length - 1].mortalityRate;
 }
 
-// ボタンをクリックした時の処理
-function handleCalculateButtonClick() {
-  const ageInput = document.getElementById("ageInput") as HTMLInputElement;
-  const resultDiv = document.getElementById("result");
-  const currentAge = parseInt(ageInput.value);
-
-  if (isNaN(currentAge) || currentAge < 0 || currentAge >= 60) {
-    if (resultDiv) {
-      resultDiv.innerText = "無効な年齢です。0から59の間で入力してください。";
-    }
+function calculateProbability(): void {
+  const ageInput = document.getElementById("age") as HTMLInputElement | null;
+  if (!ageInput) {
+    alert("年齢入力欄が見つかりません");
     return;
   }
 
-  const probability = calculateSurvivalProbability(currentAge);
-  if (resultDiv) {
-    resultDiv.innerText = `60歳まで生きる確率は ${probability.toFixed(
-      4
-    )} です。`;
+  const age = parseInt(ageInput.value, 10);
+  if (isNaN(age) || age < 0 || age > 60) {
+    alert("0歳から60歳までの年齢を入力してください");
+    return;
+  }
+
+  // 明日死ぬ確率を計算
+  const dailyMortalityRate = getMortalityRate(age) / 365;
+  const dailyProbability = dailyMortalityRate * 100;
+
+  // 60歳までに死ぬ確率を計算
+  let survivalProbability = 1.0;
+  for (let i = age; i < 60; i++) {
+    const annualMortalityRate = getMortalityRate(i);
+    survivalProbability *= 1 - annualMortalityRate;
+  }
+  const until60Probability = (1 - survivalProbability) * 100;
+
+  const dailyProbabilityElement = document.getElementById("dailyProbability");
+  const until60ProbabilityElement =
+    document.getElementById("until60Probability");
+
+  if (dailyProbabilityElement) {
+    dailyProbabilityElement.innerText = `約 ${dailyProbability.toFixed(
+      6
+    )}%`;
+  }
+
+  if (until60ProbabilityElement) {
+    until60ProbabilityElement.innerText = `約 ${until60Probability.toFixed(
+      2
+    )}%`;
   }
 }
 
-// イベントリスナーの設定
-document
-  .getElementById("calculateButton")
-  ?.addEventListener("click", handleCalculateButtonClick);
+const calculateButton = document.getElementById("calculateButton");
+if (calculateButton) {
+  calculateButton.addEventListener("click", calculateProbability);
+}

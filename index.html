@@ -1,32 +1,59 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>60歳までの生存確率計算ツール</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-
-      #result {
-        margin-top: 20px;
-      }
-
-    </style>
+    <!-- reset.css ress -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <title>60まで</title>
   </head>
 
   <body>
-    <h1>60歳までの生存確率計算ツール</h1>
-    <label for="ageInput">現在の年齢を入力してください (0-59):</label>
-    <input type="number" id="ageInput" min="0" max="59">
-    <button id="calculateButton">計算する</button>
-    <div id="result"></div>
-
-    <script src="script.js"></script>
+    <main class="main">
+      <h1>60歳までに死ぬ確率の計算</h1>
+      <section class="nes-container is-rounded">
+        <h2>あなたは何歳ですか？</h2>
+        <div class="section">
+          <div class="nes-field">
+            <label for="age">年齢（0〜60歳）</label>
+            <input type="number" id="age" min="0" max="59" class="nes-input">
+          </div>
+          <div>
+            <button type="button" class="nes-btn is-primary" id="calculateButton">計算する</button>
+          </div>
+        </div>
+      </section>
+      <section class="nes-container is-rounded">
+        <h2>結果</h2>
+        <section class="resultSection">
+          <h3 class="h3">明日死ぬ確率</h3>
+          <p class="resultText" id="dailyProbability">---</p>
+        </section>
+        <section class="section">
+          <h3 class="h3">60歳までに死ぬ確率</h3>
+          <p class="resultText" id="until60Probability">---</p>
+        </section>
+      </section>
+    </main>
+    <script src="script.js" defer></script>
   </body>
 
 </html>
+<!-- <a class="nes-btn" href="#">Normal</a>
+
+<button type="button" class="nes-btn is-primary">Primary</button>
+<button type="button" class="nes-btn is-success">Success</button>
+<button type="button" class="nes-btn is-warning">Warning</button>
+<button type="button" class="nes-btn is-error">Error</button>
+<button type="button" class="nes-btn is-disabled">Disabled</button>
+
+<label class="nes-btn">
+  <span>Select your file</span>
+  <input type="file">
+</label> -->
