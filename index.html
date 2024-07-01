@@ -14,11 +14,11 @@
     <title>60まで</title>
   </head>
 
-  <body>
+  <body class="container">
     <main class="main">
       <h1>60歳までに死ぬ確率の計算</h1>
       <section class="nes-container is-rounded">
-        <h2>あなたは何歳ですか？</h2>
+        <h2 class="sectionTitle">あなたは何歳ですか？</h2>
         <div class="section">
           <div class="nes-field">
             <label for="age">年齢（0〜60歳）</label>
@@ -30,30 +30,53 @@
         </div>
       </section>
       <section class="nes-container is-rounded">
-        <h2>結果</h2>
-        <section class="resultSection">
-          <h3 class="h3">明日死ぬ確率</h3>
-          <p class="resultText" id="dailyProbability">---</p>
-        </section>
-        <section class="section">
-          <h3 class="h3">60歳までに死ぬ確率</h3>
-          <p class="resultText" id="until60Probability">---</p>
+        <h2 class="sectionTitle">結果</h2>
+        <section class="resultSectionContainer">
+
+          <section class="resultSection">
+            <h3 class="resultTitle">明日死ぬ確率</h3>
+            <p class="resultText" id="dailyProbability">---</p>
+          </section>
+          <section class="resultSection">
+            <h3 class="resultTitle">60歳までに死ぬ確率</h3>
+            <p class="resultText" id="until60Probability">---</p>
+          </section>
         </section>
       </section>
+      <div class="tableContainer">
+        <section class="nes-table-responsive">
+          <table class="nes-table is-bordered is-dark" aria-label="いろいろな確率">
+            <thead>
+              <tr>
+                <th>出来事</th>
+                <th>確率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ガリガリ君の当たりの出る確率</td>
+                <td>4%</td>
+              </tr>
+              <tr>
+                <td>双子が生まれる確率</td>
+                <td>1%</td>
+              </tr>
+              <tr>
+                <td>裁判員に選ばれる</td>
+                <td>0.011%</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
     </main>
+    <footer>
+      <a class="visually-hidden" href="..." rel="nofollow noopener noreferrer" target="_blank">
+        ソースコード
+        <i class="nes-icon github is-large"></i>
+      </a>
+    </footer>
     <script src="script.js" defer></script>
   </body>
 
 </html>
-<!-- <a class="nes-btn" href="#">Normal</a>
-
-<button type="button" class="nes-btn is-primary">Primary</button>
-<button type="button" class="nes-btn is-success">Success</button>
-<button type="button" class="nes-btn is-warning">Warning</button>
-<button type="button" class="nes-btn is-error">Error</button>
-<button type="button" class="nes-btn is-disabled">Disabled</button>
-
-<label class="nes-btn">
-  <span>Select your file</span>
-  <input type="file">
-</label> -->
