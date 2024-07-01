@@ -119,6 +119,11 @@ p {
   overflow: hidden;
 }
 
+.thead {
+  width: 100%;
+
+}
+
 .footer {
   padding: 0 0 3rem;
 }
