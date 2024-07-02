@@ -4,12 +4,18 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:css": "stylelint '**/*.css' --fix"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ethers": "^6.13.1",
     "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-order": "^6.0.4"
   }
 }

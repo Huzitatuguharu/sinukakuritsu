@@ -5,8 +5,8 @@ coverage
 coverage.json
 typechain
 typechain-types
+.stylelintrc
 
 #Hardhat files
 cache
 artifacts
-
